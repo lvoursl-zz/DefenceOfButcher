@@ -3,6 +3,7 @@ package ;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
+import openfl.events.KeyboardEvent;
 
 /**
  * ...
@@ -13,6 +14,7 @@ class Main extends Sprite
 {
 	var inited:Bool;
 	var game:Game;
+	public static var keys:Map<Int,Bool> = new Map();
 	/* ENTRY POINT */
 	
 	function resize(e) 
@@ -28,6 +30,9 @@ class Main extends Sprite
 		
 		game = new Game();
 		addChild(game);
+		
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
+		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
 		// (your code here)
 		
 		// Stage:
@@ -35,6 +40,15 @@ class Main extends Sprite
 		
 		// Assets:
 		// nme.Assets.getBitmapData("img/assetname.jpg");
+	}
+	
+	
+	public function onDown(e:KeyboardEvent) {
+		keys[e.keyCode] = true;
+	}
+	
+	public function onUp(e:KeyboardEvent) {
+		keys[e.keyCode] = false;
 	}
 
 	/* SETUP */

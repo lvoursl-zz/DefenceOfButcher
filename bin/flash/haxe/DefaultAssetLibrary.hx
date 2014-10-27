@@ -43,26 +43,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		className.set ("img/bg.jpg", __ASSET__img_bg_jpg);
-		type.set ("img/bg.jpg", AssetType.IMAGE);
 		className.set ("img/bg1.jpg", __ASSET__img_bg1_jpg);
 		type.set ("img/bg1.jpg", AssetType.IMAGE);
 		className.set ("img/Floor.png", __ASSET__img_floor_png);
 		type.set ("img/Floor.png", AssetType.IMAGE);
+		className.set ("img/hero11.png", __ASSET__img_hero11_png);
+		type.set ("img/hero11.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
 		
 		var id;
-		id = "img/bg.jpg";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
 		id = "img/bg1.jpg";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/Floor.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/hero11.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -74,14 +74,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		/*var useManifest = false;
 		
-		className.set ("img/bg.jpg", __ASSET__img_bg_jpg);
-		type.set ("img/bg.jpg", AssetType.IMAGE);
-		
 		className.set ("img/bg1.jpg", __ASSET__img_bg1_jpg);
 		type.set ("img/bg1.jpg", AssetType.IMAGE);
 		
 		className.set ("img/Floor.png", __ASSET__img_floor_png);
 		type.set ("img/Floor.png", AssetType.IMAGE);
+		
+		className.set ("img/hero11.png", __ASSET__img_hero11_png);
+		type.set ("img/hero11.png", AssetType.IMAGE);
 		*/
 		var useManifest = true;
 		
@@ -654,9 +654,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
-@:keep @:bind class __ASSET__img_bg_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_bg1_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_floor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_hero11_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
@@ -671,9 +671,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 #elseif (windows || mac || linux)
 
 
-//@:bitmap("assets/img/bg.jpg") class __ASSET__img_bg_jpg extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/bg1.jpg") class __ASSET__img_bg1_jpg extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/Floor.png") class __ASSET__img_floor_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/hero11.png") class __ASSET__img_hero11_png extends openfl.display.BitmapData {}
 //
 
 

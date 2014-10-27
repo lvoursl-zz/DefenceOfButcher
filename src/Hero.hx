@@ -1,4 +1,6 @@
 package ;
+import openfl.Assets;
+import openfl.display.Bitmap;
 import openfl.display.Sprite;
 
 /**
@@ -7,13 +9,20 @@ import openfl.display.Sprite;
  */
 class Hero extends Sprite
 {
-	public var x:Int;
-	public var y:Int;
+	//public var x:Int;
+	//public var y:Int;
 	public var bmp:Bitmap;
 	
 	public function new(x:Int, y:Int) 
 	{
 		super();
+		bmp = new Bitmap(Assets.getBitmapData("img/hero11.png"));
+		this.x = x;
+		this.y = y;
+		bmp.x = x;
+		bmp.y = y;
+		bmp.scaleX = 0.5;
+		bmp.scaleY = 0.5;
 	}
 	
 }

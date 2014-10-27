@@ -27,15 +27,15 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("img/bg.jpg");
-		types.push (AssetType.IMAGE);
-		
-		
 		urls.push ("img/bg1.jpg");
 		types.push (AssetType.IMAGE);
 		
 		
 		urls.push ("img/Floor.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/hero11.png");
 		types.push (AssetType.IMAGE);
 		
 		
