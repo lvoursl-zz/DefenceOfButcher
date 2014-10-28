@@ -39,6 +39,14 @@ class ApplicationMain {
 		types.push (AssetType.IMAGE);
 		
 		
+		urls.push ("img/heroShout.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/warrior.png");
+		types.push (AssetType.IMAGE);
+		
+		
 		
 		preloader.load (urls, types);
 		#end

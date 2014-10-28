@@ -49,6 +49,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/Floor.png", AssetType.IMAGE);
 		className.set ("img/hero11.png", __ASSET__img_hero11_png);
 		type.set ("img/hero11.png", AssetType.IMAGE);
+		className.set ("img/heroShout.png", __ASSET__img_heroshout_png);
+		type.set ("img/heroShout.png", AssetType.IMAGE);
+		className.set ("img/warrior.png", __ASSET__img_warrior_png);
+		type.set ("img/warrior.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
@@ -63,6 +67,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/hero11.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/heroShout.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/warrior.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -82,6 +94,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/hero11.png", __ASSET__img_hero11_png);
 		type.set ("img/hero11.png", AssetType.IMAGE);
+		
+		className.set ("img/heroShout.png", __ASSET__img_heroshout_png);
+		type.set ("img/heroShout.png", AssetType.IMAGE);
+		
+		className.set ("img/warrior.png", __ASSET__img_warrior_png);
+		type.set ("img/warrior.png", AssetType.IMAGE);
 		*/
 		var useManifest = true;
 		
@@ -657,11 +675,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind class __ASSET__img_bg1_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_floor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_hero11_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_heroshout_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_warrior_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
 
 #if openfl
+
+
 
 
 
@@ -674,6 +696,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 //@:bitmap("assets/img/bg1.jpg") class __ASSET__img_bg1_jpg extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/Floor.png") class __ASSET__img_floor_png extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/hero11.png") class __ASSET__img_hero11_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/heroShout.png") class __ASSET__img_heroshout_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/warrior.png") class __ASSET__img_warrior_png extends openfl.display.BitmapData {}
 //
 
 

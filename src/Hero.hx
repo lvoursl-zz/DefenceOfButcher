@@ -12,6 +12,8 @@ class Hero extends Sprite
 	//public var x:Int;
 	//public var y:Int;
 	public var bmp:Bitmap;
+	public var axePressed:Bool = false;
+	public var hp:Int = 100;
 	
 	public function new(x:Int, y:Int) 
 	{
