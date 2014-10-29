@@ -9,8 +9,6 @@ import openfl.display.Sprite;
  */
 class Hero extends Sprite
 {
-	//public var x:Int;
-	//public var y:Int;
 	public var bmp:Bitmap;
 	public var axePressed:Bool = false;
 	public var hp:Int = 100;
@@ -18,7 +16,7 @@ class Hero extends Sprite
 	public function new(x:Int, y:Int) 
 	{
 		super();
-		bmp = new Bitmap(Assets.getBitmapData("img/hero11.png"));
+		bmp = new Bitmap(Assets.getBitmapData("img/heroRight.png"));
 		this.x = x;
 		this.y = y;
 		bmp.x = x;
@@ -26,5 +24,6 @@ class Hero extends Sprite
 		bmp.scaleX = 0.5;
 		bmp.scaleY = 0.5;
 	}
+	
 	
 }

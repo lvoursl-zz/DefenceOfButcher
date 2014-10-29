@@ -35,11 +35,19 @@ class ApplicationMain {
 		types.push (AssetType.IMAGE);
 		
 		
-		urls.push ("img/hero11.png");
+		urls.push ("img/heroLeft.png");
 		types.push (AssetType.IMAGE);
 		
 		
-		urls.push ("img/heroShout.png");
+		urls.push ("img/heroLeftHit.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/heroRight.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/heroRightHit.png");
 		types.push (AssetType.IMAGE);
 		
 		

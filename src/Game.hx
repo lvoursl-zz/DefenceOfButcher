@@ -15,6 +15,8 @@ class Game extends Sprite
 	var hero:Hero;
 	var frame:Int = 0;
 	var frameToStopAnimation:Int = 0;
+	var newWarrior = new Warrior(720, 350, true);
+	var randomNumber:Float = 0;
 
 	public function new() 
 	{
@@ -51,9 +53,16 @@ class Game extends Sprite
 	}
 	
 	public function createWarrior() {
-		var newWarrior = new Warrior(720, 350);
-		warriorsArray.push(newWarrior);
-		addChild(newWarrior.bmp);
+		randomNumber = Math.random() * 10;
+		if ((randomNumber - 2) > 5) {
+			newWarrior = new Warrior(720, 350, false);
+			warriorsArray.push(newWarrior);
+			addChild(newWarrior.bmp);
+		} else {
+			newWarrior = new Warrior(0, 350, true);
+			warriorsArray.push(newWarrior);
+			addChild(newWarrior.bmp);
+		}
 	}
 	
 	public function onFrame(e:Event) {
@@ -78,19 +87,32 @@ class Game extends Sprite
 			}*/	
 			
 		if (Main.keys[37]) {
-			hero.x--;
+			hero.x -= 3;
+			hero.bmp.bitmapData = Assets.getBitmapData("img/heroLeft.png");
 		}	
 		else if (Main.keys[39]) {
-			hero.x++;
+			hero.x += 3;
+			hero.bmp.bitmapData = Assets.getBitmapData("img/heroRight.png");
 		} 		
 		else if (Main.keys[32]) {
-			hero.bmp.bitmapData = Assets.getBitmapData("img/heroShout.png");
+			if (hero.bmp.bitmapData == Assets.getBitmapData("img/heroRight.png")) {
+				hero.bmp.bitmapData = Assets.getBitmapData("img/heroRightHit.png");
+			}	
+			if (hero.bmp.bitmapData == Assets.getBitmapData("img/heroLeft.png")){
+				hero.bmp.bitmapData = Assets.getBitmapData("img/heroLeftHit.png");	
+			}
 			frameToStopAnimation = frame;
 			hero.axePressed = true;
 		}
 			
-		if ((hero.bmp.bitmapData !=  Assets.getBitmapData("img/hero11.png")) && (frame - frameToStopAnimation) == 10) {
-			hero.bmp.bitmapData =  Assets.getBitmapData("img/hero11.png");
+		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroRightHit.png")) && (frame - frameToStopAnimation) == 10) {
+			hero.bmp.bitmapData =  Assets.getBitmapData("img/heroRight.png");
+			frameToStopAnimation = 0;
+			hero.axePressed = false;
+		}
+							
+		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroLeftHit.png")) && (frame - frameToStopAnimation) == 10) {
+			hero.bmp.bitmapData =  Assets.getBitmapData("img/heroLeft.png");
 			frameToStopAnimation = 0;
 			hero.axePressed = false;
 		}
@@ -99,19 +121,23 @@ class Game extends Sprite
 	}
 	
 	public function operationsWithWarriors() {
-		if ((frame % 200) == 0) {
+		if ((frame % 100) == 0) {
 			createWarrior();
 		}
 		
 		for (warrior in warriorsArray) {
-			warrior.x--;
-			warrior.bmp.x--;
-			if ((hero.axePressed == true) && ((hero.x - warrior.x) < 40) && ((hero.x - warrior.x) > -40)) {
-				//removeChild(warrior);
-				//warriorsArray.remove(warrior);
-				//removeChild(warrior.bmp);
-				//warrior = null;
+			if (warrior.leftType == false) {
+				warrior.x--;
+				warrior.bmp.x--;
+			} else {
+				warrior.x++;
+				warrior.bmp.x++;
 			}
+			if ((hero.axePressed == true) && ((hero.x - warrior.x) < 60) && ((hero.x - warrior.x) > -40)) {
+				removeChild(warrior.bmp);
+				warriorsArray.remove(warrior);
+			}
+			
 			
 		}
 		
