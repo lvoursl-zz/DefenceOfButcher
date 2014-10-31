@@ -16,6 +16,7 @@ class Hero extends Sprite
 	public function new(x:Int, y:Int) 
 	{
 		super();
+		this.hp = 100;
 		bmp = new Bitmap(Assets.getBitmapData("img/heroRight.png"));
 		this.x = x;
 		this.y = y;

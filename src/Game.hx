@@ -3,6 +3,8 @@ import openfl.Assets;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import openfl.text.TextField;
+import openfl.text.TextFieldAutoSize;
 
 /**
  * ...
@@ -11,11 +13,15 @@ import openfl.events.Event;
 class Game extends Sprite
 {
 	var floor:Array<Floor> = [];
+	
 	var warriorsArray:Array<Warrior> = [];
+	var newWarrior = new Warrior(720, 350, true);
+	
 	var hero:Hero;
+	var heroHealthTextField = new TextField(); 
+	
 	var frame:Int = 0;
 	var frameToStopAnimation:Int = 0;
-	var newWarrior = new Warrior(720, 350, true);
 	var randomNumber:Float = 0;
 
 	public function new() 
@@ -49,6 +55,10 @@ class Game extends Sprite
 	
 	public function createHero() {
 		hero = new Hero(200, 350);
+		heroHealthTextField.text = "HP :" + hero.hp;
+		heroHealthTextField.x = 40;
+		heroHealthTextField.y = 20;
+		addChild(heroHealthTextField);
 		addChild(hero.bmp);
 	}
 	
@@ -136,6 +146,15 @@ class Game extends Sprite
 			if ((hero.axePressed == true) && ((hero.x - warrior.x) < 60) && ((hero.x - warrior.x) > -40)) {
 				removeChild(warrior.bmp);
 				warriorsArray.remove(warrior);
+			}
+			if (warrior.x == hero.x) {
+				removeChild(warrior.bmp);
+				warriorsArray.remove(warrior);
+				hero.hp -= 20;
+				heroHealthTextField.text = "HP :" + hero.hp;
+				if (hero.hp == 0) {
+					dispatchEvent(new Event("gameover"));
+				}
 			}
 			
 			

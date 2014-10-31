@@ -47,6 +47,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/bg1.jpg", AssetType.IMAGE);
 		className.set ("img/Floor.png", __ASSET__img_floor_png);
 		type.set ("img/Floor.png", AssetType.IMAGE);
+		className.set ("img/heroan.gif", __ASSET__img_heroan_gif);
+		type.set ("img/heroan.gif", AssetType.IMAGE);
 		className.set ("img/heroLeft.png", __ASSET__img_heroleft_png);
 		type.set ("img/heroLeft.png", AssetType.IMAGE);
 		className.set ("img/heroLeftHit.png", __ASSET__img_herolefthit_png);
@@ -67,6 +69,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/Floor.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/heroan.gif";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -103,6 +109,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/Floor.png", __ASSET__img_floor_png);
 		type.set ("img/Floor.png", AssetType.IMAGE);
+		
+		className.set ("img/heroan.gif", __ASSET__img_heroan_gif);
+		type.set ("img/heroan.gif", AssetType.IMAGE);
 		
 		className.set ("img/heroLeft.png", __ASSET__img_heroleft_png);
 		type.set ("img/heroLeft.png", AssetType.IMAGE);
@@ -692,6 +701,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep @:bind class __ASSET__img_bg1_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_floor_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_heroan_gif extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_heroleft_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_herolefthit_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_heroright_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -710,6 +720,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 #end
 
 #elseif (windows || mac || linux)
@@ -717,6 +728,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 //@:bitmap("assets/img/bg1.jpg") class __ASSET__img_bg1_jpg extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/Floor.png") class __ASSET__img_floor_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/heroan.gif") class __ASSET__img_heroan_gif extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/heroLeft.png") class __ASSET__img_heroleft_png extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/heroLeftHit.png") class __ASSET__img_herolefthit_png extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/heroRight.png") class __ASSET__img_heroright_png extends openfl.display.BitmapData {}

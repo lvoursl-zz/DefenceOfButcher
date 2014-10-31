@@ -14,6 +14,7 @@ class Main extends Sprite
 {
 	var inited:Bool;
 	var game:Game;
+	var screen:Screen;
 	public static var keys:Map<Int,Bool> = new Map();
 	/* ENTRY POINT */
 	
@@ -30,6 +31,8 @@ class Main extends Sprite
 		
 		game = new Game();
 		addChild(game);
+		
+		game.addEventListener("gameover", gameover);
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
@@ -49,6 +52,12 @@ class Main extends Sprite
 	
 	public function onUp(e:KeyboardEvent) {
 		keys[e.keyCode] = false;
+	}
+	
+	public function gameover(e:Event) {
+		removeChild(game);
+		screen = new Screen("gameover");
+		addChild(screen);
 	}
 
 	/* SETUP */
