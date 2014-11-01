@@ -23,15 +23,32 @@ class Game extends Sprite
 	var frame:Int = 0;
 	var frameToStopAnimation:Int = 0;
 	var randomNumber:Float = 0;
+	
+	var houseBmp:Bitmap;
+	var houseHpTextField = new TextField();
+	var houseHp:Int = 5;
+	
+	var time:Int = 50;
+	var timeTextField = new TextField();
 
 	public function new() 
 	{
 		super();
 		createBackground();
 		createFloor();
+		createHouse();
+		createTimeTable();
 		createHero();
 		createWarrior();
 		addEventListener(Event.ENTER_FRAME, onFrame);
+	}
+	
+	public function createTimeTable() {
+		timeTextField.x = 40;
+		timeTextField.y = 40;
+		timeTextField.text = "Вам осталось : " + time + " мгновений";
+		timeTextField.autoSize = TextFieldAutoSize.CENTER;
+		addChild(timeTextField);
 	}
 	
 	public function createFloor() {
@@ -40,6 +57,17 @@ class Game extends Sprite
 			floor.push(flo);
 			addChild(flo.bmp);
 		}
+	}
+	
+	public function createHouse() {
+			houseBmp = new Bitmap(Assets.getBitmapData("img/house5.png"));
+			houseBmp.x = 300;
+			houseBmp.y = 325;
+			houseHpTextField.text = "House hp :" + houseHp;
+			houseHpTextField.x = 40;
+			houseHpTextField.y = 30;
+			addChild(houseBmp);
+			addChild(houseHpTextField);
 	}
 
 	public function createBackground() {
@@ -55,7 +83,7 @@ class Game extends Sprite
 	
 	public function createHero() {
 		hero = new Hero(200, 350);
-		heroHealthTextField.text = "HP :" + hero.hp;
+		heroHealthTextField.text = "Hero hp :" + hero.hp;
 		heroHealthTextField.x = 40;
 		heroHealthTextField.y = 20;
 		addChild(heroHealthTextField);
@@ -79,23 +107,17 @@ class Game extends Sprite
 		frame++;		
 		moveHero();
 		operationsWithWarriors();
+		if ((frame % 80) == 0) {
+			time--;
+			timeTextField.text = "Вам осталось : " + time + " мгновений";
+			if (time == 0) {
+				dispatchEvent(new Event("wingame"));
+			}
+		}
 	}
 	
 	public function moveHero() {
-				// moving floor for future gameplay
-			/*if (Main.keys[37]) {
-				for (fl in floor) {
-					fl.x--;
-					fl.bmp.x--;
-				}
-			}	
-			else if (Main.keys[39]) {
-				for (fl in floor) {
-					fl.x++;
-					fl.bmp.x++;
-				}
-			}*/	
-			
+
 		if (Main.keys[37]) {
 			hero.x -= 3;
 			hero.bmp.bitmapData = Assets.getBitmapData("img/heroLeft.png");
@@ -115,18 +137,21 @@ class Game extends Sprite
 			hero.axePressed = true;
 		}
 			
-		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroRightHit.png")) && (frame - frameToStopAnimation) == 10) {
+		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroRightHit.png")) && (frame - frameToStopAnimation) == 5) {
 			hero.bmp.bitmapData =  Assets.getBitmapData("img/heroRight.png");
 			frameToStopAnimation = 0;
 			hero.axePressed = false;
 		}
 							
-		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroLeftHit.png")) && (frame - frameToStopAnimation) == 10) {
+		if ((hero.bmp.bitmapData ==  Assets.getBitmapData("img/heroLeftHit.png")) && (frame - frameToStopAnimation) == 5) {
 			hero.bmp.bitmapData =  Assets.getBitmapData("img/heroLeft.png");
 			frameToStopAnimation = 0;
 			hero.axePressed = false;
 		}
-			
+		
+		if (hero.x > 710) hero.x = 0;
+		if (hero.x < 0) hero.x = 710;
+		
 		hero.bmp.x = hero.x;
 	}
 	
@@ -144,8 +169,18 @@ class Game extends Sprite
 				warrior.bmp.x++;
 			}
 			if ((hero.axePressed == true) && ((hero.x - warrior.x) < 60) && ((hero.x - warrior.x) > -40)) {
-				removeChild(warrior.bmp);
-				warriorsArray.remove(warrior);
+				if (warrior.leftType == true) { 
+					warrior.x -= 30;
+					warrior.bmp.x -= 30;
+				} else {
+					warrior.x += 30;
+					warrior.bmp.x += 30;
+				}
+				warrior.hp--;
+				if (warrior.hp == 0) {	
+					removeChild(warrior.bmp);
+					warriorsArray.remove(warrior);
+				}
 			}
 			if (warrior.x == hero.x) {
 				removeChild(warrior.bmp);
@@ -156,8 +191,20 @@ class Game extends Sprite
 					dispatchEvent(new Event("gameover"));
 				}
 			}
+			if ((warrior.x > 720) || (warrior.x < 0)) {
+				removeChild(warrior.bmp);
+				warriorsArray.remove(warrior);
+			}
 			
-			
+			if (warrior.x == 300) {
+				houseHp--;
+				if (houseHp == 0) {
+					dispatchEvent(new Event("gameover"));
+				}
+				warrior.y = 60 * houseHp;
+				warrior.bmp.y = 60 * houseHp;
+				warriorsArray.remove(warrior);
+			}
 		}
 		
 

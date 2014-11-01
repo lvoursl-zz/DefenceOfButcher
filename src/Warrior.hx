@@ -11,6 +11,7 @@ class Warrior extends Sprite
 {
 	public var bmp:Bitmap;
 	public var leftType:Bool;
+	public var hp:Int = 3;
 
 	public function new(x:Int, y:Int, leftType:Bool) 
 	{

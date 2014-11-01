@@ -4,6 +4,7 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
 import openfl.events.KeyboardEvent;
+import openfl.events.MouseEvent;
 
 /**
  * ...
@@ -33,6 +34,7 @@ class Main extends Sprite
 		addChild(game);
 		
 		game.addEventListener("gameover", gameover);
+		game.addEventListener("wingame", wingame);
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
@@ -57,7 +59,22 @@ class Main extends Sprite
 	public function gameover(e:Event) {
 		removeChild(game);
 		screen = new Screen("gameover");
+		screen.addEventListener(MouseEvent.CLICK, createNewGame);
 		addChild(screen);
+	}
+	
+	public function wingame(e:Event) {
+		removeChild(game);
+		screen = new Screen("wingame");
+		screen.addEventListener(MouseEvent.CLICK, createNewGame);
+		addChild(screen);
+	}
+	
+	public function createNewGame(e:MouseEvent) {
+		game = new Game();
+		addChild(game);
+		
+		game.addEventListener("gameover", gameover);
 	}
 
 	/* SETUP */
