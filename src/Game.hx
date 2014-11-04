@@ -121,12 +121,10 @@ class Game extends Sprite
 		if (Main.keys[37]) {
 			hero.x -= 3;
 			hero.bmp.bitmapData = Assets.getBitmapData("img/heroLeft.png");
-		}	
-		else if (Main.keys[39]) {
+		} else if (Main.keys[39]) {
 			hero.x += 3;
 			hero.bmp.bitmapData = Assets.getBitmapData("img/heroRight.png");
-		} 		
-		else if (Main.keys[32]) {
+		} else if (Main.keys[32]) {
 			if (hero.bmp.bitmapData == Assets.getBitmapData("img/heroRight.png")) {
 				hero.bmp.bitmapData = Assets.getBitmapData("img/heroRightHit.png");
 			}	
@@ -149,8 +147,8 @@ class Game extends Sprite
 			hero.axePressed = false;
 		}
 		
-		if (hero.x > 710) hero.x = 0;
-		if (hero.x < 0) hero.x = 710;
+		if (hero.x > 710) hero.x = 710;
+		if (hero.x < 0) hero.x = 0;
 		
 		hero.bmp.x = hero.x;
 	}
@@ -161,13 +159,6 @@ class Game extends Sprite
 		}
 		
 		for (warrior in warriorsArray) {
-			if (warrior.leftType == false) {
-				warrior.x--;
-				warrior.bmp.x--;
-			} else {
-				warrior.x++;
-				warrior.bmp.x++;
-			}
 			if ((hero.axePressed == true) && ((hero.x - warrior.x) < 60) && ((hero.x - warrior.x) > -40)) {
 				if (warrior.leftType == true) { 
 					warrior.x -= 30;
@@ -181,8 +172,7 @@ class Game extends Sprite
 					removeChild(warrior.bmp);
 					warriorsArray.remove(warrior);
 				}
-			}
-			if (warrior.x == hero.x) {
+			} else if (warrior.x == hero.x) {
 				removeChild(warrior.bmp);
 				warriorsArray.remove(warrior);
 				hero.hp -= 20;
@@ -190,20 +180,26 @@ class Game extends Sprite
 				if (hero.hp == 0) {
 					dispatchEvent(new Event("gameover"));
 				}
-			}
-			if ((warrior.x > 720) || (warrior.x < 0)) {
+			} else if ((warrior.x > 720) || (warrior.x < 0)) {
 				removeChild(warrior.bmp);
 				warriorsArray.remove(warrior);
-			}
-			
-			if (warrior.x == 300) {
+			} else if (warrior.x == 300) {
 				houseHp--;
+				houseHpTextField.text = "House hp :" + houseHp;
 				if (houseHp == 0) {
 					dispatchEvent(new Event("gameover"));
 				}
 				warrior.y = 60 * houseHp;
 				warrior.bmp.y = 60 * houseHp;
 				warriorsArray.remove(warrior);
+			}
+			
+			if (warrior.leftType == false) {
+				warrior.x--;
+				warrior.bmp.x--;
+			} else {
+				warrior.x++;
+				warrior.bmp.x++;
 			}
 		}
 		

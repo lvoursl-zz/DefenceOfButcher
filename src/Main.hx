@@ -30,11 +30,9 @@ class Main extends Sprite
 		if (inited) return;
 		inited = true;
 		
-		game = new Game();
-		addChild(game);
-		
-		game.addEventListener("gameover", gameover);
-		game.addEventListener("wingame", wingame);
+		screen = new Screen("helloscreen");
+		addChild(screen);
+		screen.addEventListener(MouseEvent.CLICK, createNewGame);
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
@@ -71,9 +69,10 @@ class Main extends Sprite
 	}
 	
 	public function createNewGame(e:MouseEvent) {
+		removeChild(screen);
 		game = new Game();
 		addChild(game);
-		
+		game.addEventListener("wingame", wingame);
 		game.addEventListener("gameover", gameover);
 	}
 

@@ -1,4 +1,16 @@
-runner0
+DefenceOfButcher
 =======
 
-Simple runner which developed with haxe for game dev practice, experience and fun
+Да-да, вы индеец, защищающий бакалею своего друга мясника от скелетов.
+Ваша задача - защищать ее определенный промежуток времени. Только до 5 скелетов может дойти до бакалеи, в противном случае вы проиграете. 
+У героя так же есть ХП, и оно отнимается при встрече со скелетом. Бонус в том, что скелет погибает в этом случае:)
+Скелет погибает с 3-ех ударов.
+Передвигаться на стрелочки.
+Удар на пробел.
+Ссылка : http://www.fastswf.com/UAtQDmM
+	
+=======
+You should defence butcher. To hit - press SPACE. To move - arrows (left and right).
+Double click to start.
+Link : http://www.fastswf.com/UAtQDmM
+	
