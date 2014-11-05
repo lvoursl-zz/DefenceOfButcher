@@ -7,10 +7,10 @@ DefenceOfButcher
 Скелет погибает с 3-ех ударов.
 Передвигаться на стрелочки.
 Удар на пробел.
-Ссылка : http://www.fastswf.com/UAtQDmM
+Ссылка : http://www.fastswf.com/Asy0fII
 	
 =======
 You should defence butcher. To hit - press SPACE. To move - arrows (left and right).
 Double click to start.
-Link : http://www.fastswf.com/UAtQDmM
+Link : http://www.fastswf.com/Asy0fII
 	
